@@ -196,6 +196,52 @@
         font-size: 1rem;
       }
     }
+/* ===== REPRODUCTOR DE MÚSICA (inferior) ===== */
+.music-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 20, 50, 0.7);
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+  border-top: 1px solid #3a4abf;
+}
+
+.music-btn {
+  background: rgba(70, 80, 140, 0.5);
+  border: 1px solid #5a6bbf;
+  border-radius: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0d8ff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.music-btn:hover {
+  background: rgba(90, 100, 180, 0.7);
+  color: #ffffff;
+}
+
+.music-btn.playing {
+  color: #a0ffcc;
+}
+
+.music-label {
+  color: #a0b8e0;
+  font-size: 0.85rem;
+  font-style: italic;
+}
   </style>
 </head>
 <body>
@@ -345,6 +391,70 @@
         `;
       }, 900);
     }
+
   </script>
+<!-- Reproductor de música con lista de reproducción -->
+<div class="music-bar">
+  <div class="music-btn" id="musicBtn">♪</div>
+  <div class="music-label" id="musicLabel">Música mística (opcional)</div>
+</div>
+
+<script>
+  // Lista de tus melodías (¡ajusta los nombres si es necesario!)
+  const playlist = [
+    '../assets/Pulsar.mp3',
+    '../assets/Singularity.mp3',
+    '../assets/Spaghettification.mp3'
+  ];
+
+  let currentTrackIndex = 0;
+  const musicAudio = new Audio();
+  const musicBtn = document.getElementById('musicBtn');
+  const musicLabel = document.getElementById('musicLabel');
+
+  // Configuración inicial
+  musicAudio.volume = 0.25; // 25% de volumen
+  musicAudio.src = playlist[currentTrackIndex];
+
+  // Cuando termina una pista, pasa a la siguiente (o vuelve al inicio)
+  musicAudio.addEventListener('ended', () => {
+    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+    musicAudio.src = playlist[currentTrackIndex];
+    if (!musicAudio.paused) {
+      musicAudio.play();
+    }
+  });
+
+  // Control de reproducción
+  musicBtn.addEventListener('click', () => {
+    if (musicAudio.paused) {
+      const playPromise = musicAudio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            musicBtn.classList.add('playing');
+            musicBtn.textContent = '⏸';
+            musicLabel.textContent = 'Música activa';
+          })
+          .catch(() => {
+            musicLabel.textContent = 'Haz clic en la página primero';
+            setTimeout(() => {
+              musicLabel.textContent = 'Música mística (opcional)';
+            }, 2000);
+          });
+      }
+    } else {
+      musicAudio.pause();
+      musicBtn.classList.remove('playing');
+      musicBtn.textContent = '♪';
+      musicLabel.textContent = 'Música mística (opcional)';
+    }
+  });
+
+  // Detener al salir (opcional, pero limpio)
+  window.addEventListener('beforeunload', () => {
+    musicAudio.pause();
+  });
+</script>
 </body>
 </html>
