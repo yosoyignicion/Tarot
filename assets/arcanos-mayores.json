@@ -1,0 +1,134 @@
+[
+  {
+    "numero": 0,
+    "nombre": "El Loco",
+    "esencia": "Nuevo comienzo, fe en lo desconocido",
+    "mensaje": "Empieza aunque no lo tengas todo claro. La perfección no es requisito para avanzar."
+  },
+  {
+    "numero": 1,
+    "nombre": "El Mago",
+    "esencia": "Recursos, intención, acción consciente",
+    "mensaje": "Ya tienes lo necesario: tu mente, tus manos y tu curiosidad. Usa lo que tienes, no lo que crees que te falta."
+  },
+  {
+    "numero": 2,
+    "nombre": "La Sacerdotisa",
+    "esencia": "Intuición, lo no dicho, sabiduría interna",
+    "mensaje": "Escucha esa vocecita que dice ‘revisa la línea 17’. A veces, el conocimiento está en el silencio, no en el ruido."
+  },
+  {
+    "numero": 3,
+    "nombre": "La Emperatriz",
+    "esencia": "Crecimiento, cuidado, creatividad",
+    "mensaje": "Cultiva tus proyectos como un jardín: con paciencia, atención y sin forzar el crecimiento."
+  },
+  {
+    "numero": 4,
+    "nombre": "El Emperador",
+    "esencia": "Estructura, orden, responsabilidad",
+    "mensaje": "Un buen cimiento evita caos después. Planifica, organiza, pero no te atasques en la perfección del esquema."
+  },
+  {
+    "numero": 5,
+    "nombre": "El Hierofante",
+    "esencia": "Tradición, enseñanza, valores compartidos",
+    "mensaje": "Aprende de quienes van delante, pero no copies ciegamente. Tu camino es tuyo, aunque uses sus mapas."
+  },
+  {
+    "numero": 6,
+    "nombre": "Los Enamorados",
+    "esencia": "Elección, alineación, valores personales",
+    "mensaje": "No se trata de elegir bien o mal, sino de elegir con coherencia. ¿Esto refleja quién eres o quién crees que deberías ser?"
+  },
+  {
+    "numero": 7,
+    "nombre": "El Carro",
+    "esencia": "Voluntad, dirección, impulso",
+    "mensaje": "Avanza con propósito, no con prisa. La velocidad no gana carreras; la constancia sí."
+  },
+  {
+    "numero": 8,
+    "nombre": "La Fuerza",
+    "esencia": "Coraje suave, autodominio, paciencia",
+    "mensaje": "La verdadera fuerza no es romper, sino sostener. Respira, calma la mente y sigue."
+  },
+  {
+    "numero": 9,
+    "nombre": "El Ermitaño",
+    "esencia": "Reflexión, búsqueda interior, guía",
+    "mensaje": "A veces hay que apartarse del ruido para escuchar tu propia voz. No es huir: es recargar."
+  },
+  {
+    "numero": 10,
+    "nombre": "La Rueda de la Fortuna",
+    "esencia": "Cambio, ciclos, impermanencia",
+    "mensaje": "Lo que hoy falla, mañana puede funcionar. Los ciclos no son castigo: son parte del proceso."
+  },
+  {
+    "numero": 11,
+    "nombre": "La Justicia",
+    "esencia": "Equilibrio, consecuencias, claridad",
+    "mensaje": "Cada acción deja huella. Actúa con integridad, no por miedo al castigo, sino por respeto a ti mismo."
+  },
+  {
+    "numero": 12,
+    "nombre": "El Colgado",
+    "esencia": "Perspectiva, pausa, renuncia voluntaria",
+    "mensaje": "A veces, ver las cosas al revés revela lo que no veías. Detente. No es perder tiempo; es ganar visión."
+  },
+  {
+    "numero": 13,
+    "nombre": "La Muerte",
+    "esencia": "Transformación, fin necesario",
+    "mensaje": "Algo debe terminar para que algo nuevo respire. No es pérdida: es espacio para lo que viene."
+  },
+  {
+    "numero": 14,
+    "nombre": "La Templanza",
+    "esencia": "Equilibrio, armonía, integración",
+    "mensaje": "No todo es blanco o negro. Mezcla lo técnico con lo humano, lo rápido con lo profundo. La armonía está en el punto medio."
+  },
+  {
+    "numero": 15,
+    "nombre": "El Diablo",
+    "esencia": "Ataduras invisibles, hábitos, ilusión",
+    "mensaje": "¿Estás atrapado por el miedo al fracaso o por la comodidad de lo conocido? Rompe la cadena: tú la sostienes."
+  },
+  {
+    "numero": 16,
+    "nombre": "La Torre",
+    "esencia": "Caída repentina, revelación, verdad",
+    "mensaje": "Cuando todo se derrumba, no es el fin: es la oportunidad de construir sobre cimientos reales, no sobre ilusiones."
+  },
+  {
+    "numero": 17,
+    "nombre": "La Estrella",
+    "esencia": "Esperanza, inspiración, sanación",
+    "mensaje": "Incluso en la oscuridad, hay una luz que guía. Confía en tu capacidad de recuperarte. Ya lo has hecho antes."
+  },
+  {
+    "numero": 18,
+    "nombre": "La Luna",
+    "esencia": "Ilusión, miedo oculto, intuición",
+    "mensaje": "No todo lo que temes es real. Pregunta: ¿esto es un peligro o solo mi inseguridad disfrazada?"
+  },
+  {
+    "numero": 19,
+    "nombre": "El Sol",
+    "esencia": "Claridad, éxito, alegría auténtica",
+    "mensaje": "Disfruta este momento de logro. No es vanidad: es reconocer tu esfuerzo. El sol brilla para todos, también para ti."
+  },
+  {
+    "numero": 20,
+    "nombre": "El Juicio",
+    "esencia": "Renacimiento, llamado, propósito",
+    "mensaje": "Es hora de dejar atrás lo que ya no te define. Tu pasado te formó, pero no te encadena."
+  },
+  {
+    "numero": 21,
+    "nombre": "El Mundo",
+    "esencia": "Culminación, integración, plenitud",
+    "mensaje": "Has completado un ciclo. No es el final, sino la puerta a uno nuevo. Llevas contigo todo lo aprendido."
+  }
+]

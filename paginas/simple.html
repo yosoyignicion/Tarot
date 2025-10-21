@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tarot Simple</title>
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <style>
+    /* ===== FONDO CON ESTRELLAS (igual que index.html) ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      color: #e0e0ff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 15% 25%, #ffffff44, transparent),
+        radial-gradient(2px 2px at 35% 65%, #ffffff33, transparent),
+        radial-gradient(2px 2px at 55% 15%, #ffffff55, transparent),
+        radial-gradient(2px 2px at 75% 55%, #ffffff22, transparent),
+        radial-gradient(2px 2px at 5% 75%, #ffffff66, transparent),
+        radial-gradient(2px 2px at 85% 5%, #ffffff33, transparent);
+      animation: parallax 35s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes parallax {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 1.5rem;
+      color: #c2d9ff;
+      font-weight: 300;
+    }
+
+    /* ===== CARTA ===== */
+    .carta {
+      background: rgba(30, 35, 80, 0.6);
+      border: 1px solid #5a6bbf;
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin: 1.5rem 0;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.4s ease;
+    }
+
+    .carta.vacia {
+      justify-content: center;
+      color: #a0b0e0;
+      font-style: italic;
+    }
+
+    .carta-nombre {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #d0e0ff;
+      margin: 0 0 0.8rem;
+    }
+
+    .carta-esencia {
+      font-size: 1rem;
+      color: #a0c0ff;
+      margin: 0 0 1.2rem;
+      font-style: italic;
+    }
+
+    .carta-mensaje {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #e0e8ff;
+    }
+
+    /* ===== BOTONES ===== */
+    .acciones {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: rgba(70, 80, 140, 0.3);
+      border: 1px solid #5a6bbf;
+      border-radius: 20px;
+      padding: 0.8rem;
+      color: #d0e0ff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover {
+      background: rgba(90, 100, 180, 0.5);
+      color: #ffffff;
+      border-color: #7a8cff;
+    }
+
+    /* ===== DONACIÓN ===== */
+    .donacion {
+      margin-top: 2rem;
+    }
+
+    .btn-donar {
+      background: transparent;
+      border: 1px solid #8a9bff;
+      border-radius: 20px;
+      padding: 0.6rem 1.4rem;
+      color: #b0c4ff;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-donar:hover {
+      background: rgba(138, 155, 255, 0.15);
+      color: #ffffff;
+      border-color: #a0b0ff;
+    }
+
+    .frase-donar {
+      font-size: 0.9rem;
+      color: #a0b0e0;
+      margin-top: 0.8rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ===== ANIMACIÓN DE CARGA ===== */
+    .cargando {
+      font-style: italic;
+      color: #a0b0e0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .carta-nombre {
+        font-size: 1.4rem;
+      }
+      .carta-mensaje {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tarot Simple</h1>
+
+    <div class="carta" id="carta-contenedor">
+      <div class="cargando">Haz clic en "Tirar carta" para comenzar</div>
+    </div>
+
+    <div class="acciones">
+      <button class="btn" onclick="tirarCarta()">✨ Tirar carta</button>
+      <a href="../index.html" class="btn">← Volver al inicio</a>
+    </div>
+
+    <div class="donacion">
+      <a href="https://buymeacoffee.com/yosoyignicion" target="_blank" class="btn-donar">
+        ☕ Invítame un café
+      </a>
+      <div class="frase-donar">
+        Si esta tirada te trae claridad o consuelo,  
+        tu apoyo me ayuda a mantener este espacio libre y con cariño.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // === JSON de Arcanos Mayores (integrado directamente) ===
+    const arcanosMayores = [
+      {"numero":0,"nombre":"El Loco","esencia":"Nuevo comienzo, fe en lo desconocido","mensaje":"Empieza aunque no lo tengas todo claro. La perfección no es requisito para avanzar."},
+      {"numero":1,"nombre":"El Mago","esencia":"Recursos, intención, acción consciente","mensaje":"Ya tienes lo necesario: tu mente, tus manos y tu curiosidad. Usa lo que tienes, no lo que crees que te falta."},
+      {"numero":2,"nombre":"La Sacerdotisa","esencia":"Intuición, lo no dicho, sabiduría interna","mensaje":"Escucha esa vocecita que dice ‘revisa la línea 17’. A veces, el conocimiento está en el silencio, no en el ruido."},
+      {"numero":3,"nombre":"La Emperatriz","esencia":"Crecimiento, cuidado, creatividad","mensaje":"Cultiva tus proyectos como un jardín: con paciencia, atención y sin forzar el crecimiento."},
+      {"numero":4,"nombre":"El Emperador","esencia":"Estructura, orden, responsabilidad","mensaje":"Un buen cimiento evita caos después. Planifica, organiza, pero no te atasques en la perfección del esquema."},
+      {"numero":5,"nombre":"El Hierofante","esencia":"Tradición, enseñanza, valores compartidos","mensaje":"Aprende de quienes van delante, pero no copies ciegamente. Tu camino es tuyo, aunque uses sus mapas."},
+      {"numero":6,"nombre":"Los Enamorados","esencia":"Elección, alineación, valores personales","mensaje":"No se trata de elegir bien o mal, sino de elegir con coherencia. ¿Esto refleja quién eres o quién crees que deberías ser?"},
+      {"numero":7,"nombre":"El Carro","esencia":"Voluntad, dirección, impulso","mensaje":"Avanza con propósito, no con prisa. La velocidad no gana carreras; la constancia sí."},
+      {"numero":8,"nombre":"La Fuerza","esencia":"Coraje suave, autodominio, paciencia","mensaje":"La verdadera fuerza no es romper, sino sostener. Respira, calma la mente y sigue."},
+      {"numero":9,"nombre":"El Ermitaño","esencia":"Reflexión, búsqueda interior, guía","mensaje":"A veces hay que apartarse del ruido para escuchar tu propia voz. No es huir: es recargar."},
+      {"numero":10,"nombre":"La Rueda de la Fortuna","esencia":"Cambio, ciclos, impermanencia","mensaje":"Lo que hoy falla, mañana puede funcionar. Los ciclos no son castigo: son parte del proceso."},
+      {"numero":11,"nombre":"La Justicia","esencia":"Equilibrio, consecuencias, claridad","mensaje":"Cada acción deja huella. Actúa con integridad, no por miedo al castigo, sino por respeto a ti mismo."},
+      {"numero":12,"nombre":"El Colgado","esencia":"Perspectiva, pausa, renuncia voluntaria","mensaje":"A veces, ver las cosas al revés revela lo que no veías. Detente. No es perder tiempo; es ganar visión."},
+      {"numero":13,"nombre":"La Muerte","esencia":"Transformación, fin necesario","mensaje":"Algo debe terminar para que algo nuevo respire. No es pérdida: es espacio para lo que viene."},
+      {"numero":14,"nombre":"La Templanza","esencia":"Equilibrio, armonía, integración","mensaje":"No todo es blanco o negro. Mezcla lo técnico con lo humano, lo rápido con lo profundo. La armonía está en el punto medio."},
+      {"numero":15,"nombre":"El Diablo","esencia":"Ataduras invisibles, hábitos, ilusión","mensaje":"¿Estás atrapado por el miedo al fracaso o por la comodidad de lo conocido? Rompe la cadena: tú la sostienes."},
+      {"numero":16,"nombre":"La Torre","esencia":"Caída repentina, revelación, verdad","mensaje":"Cuando todo se derrumba, no es el fin: es la oportunidad de construir sobre cimientos reales, no sobre ilusiones."},
+      {"numero":17,"nombre":"La Estrella","esencia":"Esperanza, inspiración, sanación","mensaje":"Incluso en la oscuridad, hay una luz que guía. Confía en tu capacidad de recuperarte. Ya lo has hecho antes."},
+      {"numero":18,"nombre":"La Luna","esencia":"Ilusión, miedo oculto, intuición","mensaje":"No todo lo que temes es real. Pregunta: ¿esto es un peligro o solo mi inseguridad disfrazada?"},
+      {"numero":19,"nombre":"El Sol","esencia":"Claridad, éxito, alegría auténtica","mensaje":"Disfruta este momento de logro. No es vanidad: es reconocer tu esfuerzo. El sol brilla para todos, también para ti."},
+      {"numero":20,"nombre":"El Juicio","esencia":"Renacimiento, llamado, propósito","mensaje":"Es hora de dejar atrás lo que ya no te define. Tu pasado te formó, pero no te encadena."},
+      {"numero":21,"nombre":"El Mundo","esencia":"Culminación, integración, plenitud","mensaje":"Has completado un ciclo. No es el final, sino la puerta a uno nuevo. Llevas contigo todo lo aprendido."}
+    ];
+
+    const cartaContenedor = document.getElementById('carta-contenedor');
+
+    function tirarCarta() {
+      // Mostrar estado de carga
+      cartaContenedor.innerHTML = '<div class="cargando">Las cartas se alinean...</div>';
+      
+      // Simular pequeña pausa para efecto (como en un videojuego)
+      setTimeout(() => {
+        const carta = arcanosMayores[Math.floor(Math.random() * arcanosMayores.length)];
+        
+        cartaContenedor.innerHTML = `
+          <div class="carta-nombre">${carta.nombre}</div>
+          <div class="carta-esencia">${carta.esencia}</div>
+          <div class="carta-mensaje">“${carta.mensaje}”</div>
+        `;
+      }, 800);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oráculo Místico</title>
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <style>
+    /* ===== FONDO CON ESTRELLAS (coherente con el resto) ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      color: #e0e0ff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 25% 20%, #ffffff55, transparent),
+        radial-gradient(2px 2px at 45% 60%, #ffffff33, transparent),
+        radial-gradient(2px 2px at 65% 10%, #ffffff44, transparent),
+        radial-gradient(2px 2px at 85% 50%, #ffffff22, transparent),
+        radial-gradient(2px 2px at 5% 70%, #ffffff66, transparent),
+        radial-gradient(2px 2px at 95% 5%, #ffffff33, transparent);
+      animation: parallax 40s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes parallax {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 1.5rem;
+      color: #c2d9ff;
+      font-weight: 300;
+    }
+
+    /* ===== SECCIÓN DE TRES CARTAS ===== */
+    .cartas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+
+    .carta {
+      background: rgba(30, 35, 80, 0.6);
+      border: 1px solid #5a6bbf;
+      border-radius: 16px;
+      padding: 1.4rem;
+      min-width: 220px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .carta.vacia {
+      justify-content: center;
+      color: #a0b0e0;
+      font-style: italic;
+    }
+
+    .carta-titulo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #b0c8ff;
+    }
+
+    .carta-nombre {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #d0e0ff;
+      margin: 0 0 0.6rem;
+    }
+
+    .carta-esencia {
+      font-size: 0.9rem;
+      color: #a0c0ff;
+      margin: 0 0 0.9rem;
+      font-style: italic;
+    }
+
+    .carta-mensaje {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #e0e8ff;
+    }
+
+    /* ===== BOTONES ===== */
+    .acciones {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      background: rgba(70, 80, 140, 0.3);
+      border: 1px solid #5a6bbf;
+      border-radius: 20px;
+      padding: 0.8rem;
+      color: #d0e0ff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover {
+      background: rgba(90, 100, 180, 0.5);
+      color: #ffffff;
+      border-color: #7a8cff;
+    }
+
+    /* ===== DONACIÓN ===== */
+    .donacion {
+      margin-top: 2rem;
+    }
+
+    .btn-donar {
+      background: transparent;
+      border: 1px solid #8a9bff;
+      border-radius: 20px;
+      padding: 0.6rem 1.4rem;
+      color: #b0c4ff;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-donar:hover {
+      background: rgba(138, 155, 255, 0.15);
+      color: #ffffff;
+      border-color: #a0b0ff;
+    }
+
+    .frase-donar {
+      font-size: 0.9rem;
+      color: #a0b0e0;
+      margin-top: 0.8rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .cargando {
+      font-style: italic;
+      color: #a0b0e0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 650px) {
+      .cartas {
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .carta {
+        min-width: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Oráculo Místico</h1>
+
+    <div class="cartas">
+      <div class="carta" id="carta-pasado">
+        <div class="carta-titulo">🕰️ Pasado</div>
+        <div class="cargando">Tira las cartas para revelar</div>
+      </div>
+      <div class="carta" id="carta-presente">
+        <div class="carta-titulo">🌿 Presente</div>
+        <div class="cargando">Tira las cartas para revelar</div>
+      </div>
+      <div class="carta" id="carta-futuro">
+        <div class="carta-titulo">🔮 Futuro</div>
+        <div class="cargando">Tira las cartas para revelar</div>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <button class="btn" onclick="tirarCartas()">✨ Tirar cartas</button>
+      <a href="../index.html" class="btn">← Volver al inicio</a>
+    </div>
+
+    <div class="donacion">
+      <a href="https://buymeacoffee.com/yosoyignicion" target="_blank" class="btn-donar">
+        ☕ Invítame un café
+      </a>
+      <div class="frase-donar">
+        Si esta tirada te ofrece un espejo para tu camino,  
+        tu apoyo me permite seguir creando con alma y sin prisas.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // === Arcanos Mayores ===
+    const arcanosMayores = [
+      {"numero":0,"nombre":"El Loco","esencia":"Nuevo comienzo, fe en lo desconocido","mensaje":"Empieza aunque no lo tengas todo claro. La perfección no es requisito para avanzar."},
+      {"numero":1,"nombre":"El Mago","esencia":"Recursos, intención, acción consciente","mensaje":"Ya tienes lo necesario: tu mente, tus manos y tu curiosidad. Usa lo que tienes, no lo que crees que te falta."},
+      {"numero":2,"nombre":"La Sacerdotisa","esencia":"Intuición, lo no dicho, sabiduría interna","mensaje":"Escucha esa vocecita que dice ‘revisa la línea 17’. A veces, el conocimiento está en el silencio, no en el ruido."},
+      {"numero":3,"nombre":"La Emperatriz","esencia":"Crecimiento, cuidado, creatividad","mensaje":"Cultiva tus proyectos como un jardín: con paciencia, atención y sin forzar el crecimiento."},
+      {"numero":4,"nombre":"El Emperador","esencia":"Estructura, orden, responsabilidad","mensaje":"Un buen cimiento evita caos después. Planifica, organiza, pero no te atasques en la perfección del esquema."},
+      {"numero":5,"nombre":"El Hierofante","esencia":"Tradición, enseñanza, valores compartidos","mensaje":"Aprende de quienes van delante, pero no copies ciegamente. Tu camino es tuyo, aunque uses sus mapas."},
+      {"numero":6,"nombre":"Los Enamorados","esencia":"Elección, alineación, valores personales","mensaje":"No se trata de elegir bien o mal, sino de elegir con coherencia. ¿Esto refleja quién eres o quién crees que deberías ser?"},
+      {"numero":7,"nombre":"El Carro","esencia":"Voluntad, dirección, impulso","mensaje":"Avanza con propósito, no con prisa. La velocidad no gana carreras; la constancia sí."},
+      {"numero":8,"nombre":"La Fuerza","esencia":"Coraje suave, autodominio, paciencia","mensaje":"La verdadera fuerza no es romper, sino sostener. Respira, calma la mente y sigue."},
+      {"numero":9,"nombre":"El Ermitaño","esencia":"Reflexión, búsqueda interior, guía","mensaje":"A veces hay que apartarse del ruido para escuchar tu propia voz. No es huir: es recargar."},
+      {"numero":10,"nombre":"La Rueda de la Fortuna","esencia":"Cambio, ciclos, impermanencia","mensaje":"Lo que hoy falla, mañana puede funcionar. Los ciclos no son castigo: son parte del proceso."},
+      {"numero":11,"nombre":"La Justicia","esencia":"Equilibrio, consecuencias, claridad","mensaje":"Cada acción deja huella. Actúa con integridad, no por miedo al castigo, sino por respeto a ti mismo."},
+      {"numero":12,"nombre":"El Colgado","esencia":"Perspectiva, pausa, renuncia voluntaria","mensaje":"A veces, ver las cosas al revés revela lo que no veías. Detente. No es perder tiempo; es ganar visión."},
+      {"numero":13,"nombre":"La Muerte","esencia":"Transformación, fin necesario","mensaje":"Algo debe terminar para que algo nuevo respire. No es pérdida: es espacio para lo que viene."},
+      {"numero":14,"nombre":"La Templanza","esencia":"Equilibrio, armonía, integración","mensaje":"No todo es blanco o negro. Mezcla lo técnico con lo humano, lo rápido con lo profundo. La armonía está en el punto medio."},
+      {"numero":15,"nombre":"El Diablo","esencia":"Ataduras invisibles, hábitos, ilusión","mensaje":"¿Estás atrapado por el miedo al fracaso o por la comodidad de lo conocido? Rompe la cadena: tú la sostienes."},
+      {"numero":16,"nombre":"La Torre","esencia":"Caída repentina, revelación, verdad","mensaje":"Cuando todo se derrumba, no es el fin: es la oportunidad de construir sobre cimientos reales, no sobre ilusiones."},
+      {"numero":17,"nombre":"La Estrella","esencia":"Esperanza, inspiración, sanación","mensaje":"Incluso en la oscuridad, hay una luz que guía. Confía en tu capacidad de recuperarte. Ya lo has hecho antes."},
+      {"numero":18,"nombre":"La Luna","esencia":"Ilusión, miedo oculto, intuición","mensaje":"No todo lo que temes es real. Pregunta: ¿esto es un peligro o solo mi inseguridad disfrazada?"},
+      {"numero":19,"nombre":"El Sol","esencia":"Claridad, éxito, alegría auténtica","mensaje":"Disfruta este momento de logro. No es vanidad: es reconocer tu esfuerzo. El sol brilla para todos, también para ti."},
+      {"numero":20,"nombre":"El Juicio","esencia":"Renacimiento, llamado, propósito","mensaje":"Es hora de dejar atrás lo que ya no te define. Tu pasado te formó, pero no te encadena."},
+      {"numero":21,"nombre":"El Mundo","esencia":"Culminación, integración, plenitud","mensaje":"Has completado un ciclo. No es el final, sino la puerta a uno nuevo. Llevas contigo todo lo aprendido."}
+    ];
+
+    // === Arcanos Menores ===
+    const arcanosMenores = {
+      "Bastos": [
+        {"numero":1,"nombre":"As de Bastos","esencia":"Nueva idea, chispa inicial","mensaje":"Una idea acaba de nacer. No la juzgues: protótala."},
+        {"numero":2,"nombre":"2 de Bastos","esencia":"Planificación, opciones","mensaje":"Tienes dos caminos. Elige no el perfecto, sino el que puedes empezar hoy."},
+        {"numero":3,"nombre":"3 de Bastos","esencia":"Colaboración, primeros frutos","mensaje":"Comparte tu proyecto. El feedback temprano evita caídas grandes."},
+        {"numero":4,"nombre":"4 de Bastos","esencia":"Estabilidad, celebración sencilla","mensaje":"Detente un momento. Has construido algo sólido. Merece ser celebrado, aunque sea en silencio."},
+        {"numero":5,"nombre":"5 de Bastos","esencia":"Competencia, esfuerzo disperso","mensaje":"No todo es una carrera. A veces, basta con avanzar a tu ritmo."},
+        {"numero":6,"nombre":"6 de Bastos","esencia":"Reconocimiento, avance visible","mensaje":"Tu esfuerzo empieza a verse. No lo minimices: es mérito tuyo."},
+        {"numero":7,"nombre":"7 de Bastos","esencia":"Resistencia, defender tu visión","mensaje":"Alguien duda de ti. Confía en tu camino, pero escucha con calma."},
+        {"numero":8,"nombre":"8 de Bastos","esencia":"Rapidez, momentum","mensaje":"Las cosas fluyen. Aprovecha este impulso, pero no quemes energía innecesaria."},
+        {"numero":9,"nombre":"9 de Bastos","esencia":"Cansancio con logro, casi llegada","mensaje":"Estás agotado, pero cerca. Un último esfuerzo consciente te llevará al final."},
+        {"numero":10,"nombre":"10 de Bastos","esencia":"Carga excesiva, necesidad de soltar","mensaje":"Llevas demasiado. Delega, simplifica o descansa. No eres una mula."},
+        {"numero":11,"nombre":"Reina de Bastos","esencia":"Confianza, calidez, liderazgo práctico","mensaje":"Actúa con entusiasmo, pero sin quemarte. Tu energía es valiosa: cuídala."}
+      ],
+      "Copas": [
+        {"numero":1,"nombre":"As de Copas","esencia":"Apertura emocional, conexión nueva","mensaje":"Permítete sentir. Una nueva relación (contigo o con otros) está floreciendo."},
+        {"numero":2,"nombre":"2 de Copas","esencia":"Equilibrio relacional, reciprocidad","mensaje":"La verdadera conexión nace del respeto mutuo, no del sacrificio."},
+        {"numero":3,"nombre":"3 de Copas","esencia":"Celebración compartida, comunidad","mensaje":"Rodearte de personas que te entienden no es lujo: es necesidad."},
+        {"numero":4,"nombre":"4 de Copas","esencia":"Desconexión, necesidad de pausa","mensaje":"No estás aburrido: estás saturado. Date permiso para no responder."},
+        {"numero":5,"nombre":"5 de Copas","esencia":"Pérdida emocional, enfoque en lo caído","mensaje":"Sí, algo se perdió. Pero mira: aún quedan copas de pie. No todo se fue."},
+        {"numero":6,"nombre":"6 de Copas","esencia":"Nostalgia, raíces, apoyo del pasado","mensaje":"Lo que aprendiste antes sigue sirviéndote. Honra tu historia, pero no vivas en ella."},
+        {"numero":7,"nombre":"7 de Copas","esencia":"Ilusiones, múltiples deseos","mensaje":"Tienes muchas ideas emocionales. Elige una y ponle pies en la tierra."},
+        {"numero":8,"nombre":"8 de Copas","esencia":"Marcha consciente, dejar atrás","mensaje":"Irte no es fracaso. A veces, soltar es el acto más valiente."},
+        {"numero":9,"nombre":"9 de Copas","esencia":"Satisfacción íntima, autorrecompensa","mensaje":"Te sientes en paz contigo mismo. Eso no es egoísmo: es madurez."},
+        {"numero":10,"nombre":"10 de Copas","esencia":"Armonía familiar/emocional","mensaje":"El bienestar no es ruido: es calma compartida. Valóralo."},
+        {"numero":11,"nombre":"Reina de Copas","esencia":"Intuición clara, empatía equilibrada","mensaje":"Confía en tu sensibilidad. No es debilidad: es tu brújula interna."}
+      ],
+      "Espadas": [
+        {"numero":1,"nombre":"As de Espadas","esencia":"Claridad mental, nueva perspectiva","mensaje":"Ves algo con nitidez. Usa esa claridad para actuar, no para juzgar."},
+        {"numero":2,"nombre":"2 de Espadas","esencia":"Indecisión, ceguera voluntaria","mensaje":"No estás perdido: estás protegiéndote. Pero la verdad no muerde."},
+        {"numero":3,"nombre":"3 de Espadas","esencia":"Dolor emocional, corazón roto","mensaje":"Duele, sí. Pero el dolor no define tu futuro. Sanarás, paso a paso."},
+        {"numero":4,"nombre":"4 de Espadas","esencia":"Reposo mental, recuperación","mensaje":"Tu mente necesita descanso. No es pereza: es reparación."},
+        {"numero":5,"nombre":"5 de Espadas","esencia":"Victoria vacía, conflicto innecesario","mensaje":"Ganaste la batalla, pero ¿perdiste la paz? Revisa tus prioridades."},
+        {"numero":6,"nombre":"6 de Espadas","esencia":"Transición mental, dejar atrás el caos","mensaje":"Te alejas de una tormenta. No es huida: es sabiduría."},
+        {"numero":7,"nombre":"7 de Espadas","esencia":"Engaño (propio o ajeno), atajos","mensaje":"¿Estás tomando un atajo que daña tu integridad? La honestidad contigo mismo es tu mayor fuerza."},
+        {"numero":8,"nombre":"8 de Espadas","esencia":"Autolimitación, sensación de atrapado","mensaje":"Las cuerdas que te atan son imaginarias. Mira: tus manos están libres."},
+        {"numero":9,"nombre":"9 de Espadas","esencia":"Ansiedad nocturna, miedos exagerados","mensaje":"Lo que temes a las 3 a.m. rara vez ocurre al amanecer. Respira."},
+        {"numero":10,"nombre":"10 de Espadas","esencia":"Fin mental agotador, liberación","mensaje":"Ha terminado. Duele, pero ya no carga contigo. Mañana es nuevo."},
+        {"numero":11,"nombre":"Reina de Espadas","esencia":"Claridad sin crueldad, pensamiento justo","mensaje":"Habla con verdad, pero con corazón. La honestidad sin empatía hiere."}
+      ],
+      "Oros": [
+        {"numero":1,"nombre":"As de Oros","esencia":"Nueva oportunidad material","mensaje":"Una puerta se abre: un curso, un trabajo, una idea viable. Tómatelo en serio."},
+        {"numero":2,"nombre":"2 de Oros","esencia":"Equilibrio de recursos, adaptación","mensaje":"Tienes que manejar varias cosas a la vez. No es caos: es equilibrio dinámico."},
+        {"numero":3,"nombre":"3 de Oros","esencia":"Colaboración práctica, aprendizaje","mensaje":"Aprender haciendo, con otros, es la mejor escuela. Confía en el proceso."},
+        {"numero":4,"nombre":"4 de Oros","esencia":"Acumulación, miedo a soltar","mensaje":"¿Estás aferrado a algo por miedo? La abundancia fluye cuando compartes."},
+        {"numero":5,"nombre":"5 de Oros","esencia":"Crisis material o emocional","mensaje":"Parece que todo falla, pero no estás solo. Pide ayuda. Sobrevivirás."},
+        {"numero":6,"nombre":"6 de Oros","esencia":"Generosidad, equilibrio en dar/recibir","mensaje":"Ayudar y recibir no son opuestos. Ambos sanan."},
+        {"numero":7,"nombre":"7 de Oros","esencia":"Paciencia, inversión a largo plazo","mensaje":"Tu esfuerzo no da frutos hoy, pero está creciendo bajo tierra. Confía."},
+        {"numero":8,"nombre":"8 de Oros","esencia":"Trabajo constante, mejora continua","mensaje":"No es glamuroso, pero es noble: el trabajo diario construye el futuro."},
+        {"numero":9,"nombre":"9 de Oros","esencia":"Independencia, disfrute del esfuerzo","mensaje":"Has logrado estabilidad. Disfrútala sin culpa. Te la ganaste."},
+        {"numero":10,"nombre":"10 de Oros","esencia":"Legado, estabilidad familiar/económica","mensaje":"Lo que construyes hoy beneficiará a quienes vienen después. Sigue."},
+        {"numero":11,"nombre":"Reina de Oros","esencia":"Pragmatismo cálido, generosidad práctica","mensaje":"Cuida tus recursos, pero no seas avaro con tu tiempo ni tu apoyo. La abundancia se comparte."}
+      ]
+    };
+
+    function tirarCartas() {
+      const contPasado = document.getElementById('carta-pasado');
+      const contPresente = document.getElementById('carta-presente');
+      const contFuturo = document.getElementById('carta-futuro');
+
+      // Mostrar carga
+      contPasado.innerHTML = '<div class="carta-titulo">🕰️ Pasado</div><div class="cargando">Barajando...</div>';
+      contPresente.innerHTML = '<div class="carta-titulo">🌿 Presente</div><div class="cargando">Barajando...</div>';
+      contFuturo.innerHTML = '<div class="carta-titulo">🔮 Futuro</div><div class="cargando">Barajando...</div>';
+
+      setTimeout(() => {
+        // PASADO: carta menor (lo cotidiano que te formó)
+        const palos = Object.keys(arcanosMenores);
+        const paloPasado = palos[Math.floor(Math.random() * palos.length)];
+        const cartaPasado = arcanosMenores[paloPasado][Math.floor(Math.random() * arcanosMenores[paloPasado].length)];
+
+        // PRESENTE: carta mayor (el arquetipo que vives ahora)
+        const cartaPresente = arcanosMayores[Math.floor(Math.random() * arcanosMayores.length)];
+
+        // FUTURO: carta menor (la acción que siembras)
+        const paloFuturo = palos[Math.floor(Math.random() * palos.length)];
+        const cartaFuturo = arcanosMenores[paloFuturo][Math.floor(Math.random() * arcanosMenores[paloFuturo].length)];
+
+        // Renderizar
+        contPasado.innerHTML = `
+          <div class="carta-titulo">🕰️ Pasado</div>
+          <div class="carta-nombre">${cartaPasado.nombre}</div>
+          <div class="carta-esencia">${cartaPasado.esencia}</div>
+          <div class="carta-mensaje">“${cartaPasado.mensaje}”</div>
+        `;
+
+        contPresente.innerHTML = `
+          <div class="carta-titulo">🌿 Presente</div>
+          <div class="carta-nombre">${cartaPresente.nombre}</div>
+          <div class="carta-esencia">${cartaPresente.esencia}</div>
+          <div class="carta-mensaje">“${cartaPresente.mensaje}”</div>
+        `;
+
+        contFuturo.innerHTML = `
+          <div class="carta-titulo">🔮 Futuro</div>
+          <div class="carta-nombre">${cartaFuturo.nombre}</div>
+          <div class="carta-esencia">${cartaFuturo.esencia}</div>
+          <div class="carta-mensaje">“${cartaFuturo.mensaje}”</div>
+        `;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

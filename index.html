@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tarot</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <style>
+    /* ===== FONDO CON ESTRELLAS ANIMADAS ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a; /* Azul marino profundo */
+      color: #e0e0ff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Estrellas animadas con CSS puro */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 20% 30%, #ffffff55, transparent),
+        radial-gradient(2px 2px at 40% 70%, #ffffff33, transparent),
+        radial-gradient(2px 2px at 60% 20%, #ffffff44, transparent),
+        radial-gradient(2px 2px at 80% 60%, #ffffff22, transparent),
+        radial-gradient(2px 2px at 10% 80%, #ffffff66, transparent),
+        radial-gradient(2px 2px at 90% 10%, #ffffff33, transparent);
+      animation: parallax 30s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes parallax {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ===== TÍTULO ===== */
+    h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(173, 216, 230, 0.4);
+      color: #c2d9ff;
+    }
+
+    /* ===== BOTONES DE JUEGO ===== */
+    .juegos {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .btn-juego {
+      background: rgba(70, 80, 140, 0.3);
+      border: 1px solid #5a6bbf;
+      border-radius: 16px;
+      padding: 1rem;
+      color: #d0e0ff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-juego:hover {
+      background: rgba(90, 100, 180, 0.5);
+      transform: translateY(-2px);
+      color: #ffffff;
+      border-color: #7a8cff;
+    }
+
+    /* ===== BOTÓN DE DONACIÓN ===== */
+    .donacion {
+      margin-top: 1rem;
+    }
+
+    .btn-donar {
+      background: transparent;
+      border: 1px solid #8a9bff;
+      border-radius: 20px;
+      padding: 0.6rem 1.4rem;
+      color: #b0c4ff;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-donar:hover {
+      background: rgba(138, 155, 255, 0.15);
+      color: #ffffff;
+      border-color: #a0b0ff;
+    }
+
+    .frase-donar {
+      font-size: 0.95rem;
+      color: #a0b0e0;
+      margin-top: 0.8rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      .btn-juego {
+        font-size: 1.1rem;
+        padding: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tarot</h1>
+
+    <div class="juegos">
+      <a href="paginas/simple.html" class="btn-juego">Tarot Simple</a>
+      <a href="paginas/clasico.html" class="btn-juego">Tarot Clásico</a>
+      <a href="paginas/mistico.html" class="btn-juego">Oráculo Místico</a>
+    </div>
+
+    <div class="donacion">
+      <a href="https://buymeacoffee.com/yosoyignicion" target="_blank" class="btn-donar">
+        ☕ Invítame un café
+      </a>
+      <div class="frase-donar">
+        Si esta app te trae un momento de calma o claridad,  
+        tu apoyo me ayuda a seguir creándola con cariño.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

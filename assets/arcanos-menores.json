@@ -1,0 +1,274 @@
+{
+  "Bastos": [
+    {
+      "numero": 1,
+      "nombre": "As de Bastos",
+      "esencia": "Nueva idea, chispa inicial",
+      "mensaje": "Una idea acaba de nacer. No la juzgues: protótala."
+    },
+    {
+      "numero": 2,
+      "nombre": "2 de Bastos",
+      "esencia": "Planificación, opciones",
+      "mensaje": "Tienes dos caminos. Elige no el perfecto, sino el que puedes empezar hoy."
+    },
+    {
+      "numero": 3,
+      "nombre": "3 de Bastos",
+      "esencia": "Colaboración, primeros frutos",
+      "mensaje": "Comparte tu proyecto. El feedback temprano evita caídas grandes."
+    },
+    {
+      "numero": 4,
+      "nombre": "4 de Bastos",
+      "esencia": "Estabilidad, celebración sencilla",
+      "mensaje": "Detente un momento. Has construido algo sólido. Merece ser celebrado, aunque sea en silencio."
+    },
+    {
+      "numero": 5,
+      "nombre": "5 de Bastos",
+      "esencia": "Competencia, esfuerzo disperso",
+      "mensaje": "No todo es una carrera. A veces, basta con avanzar a tu ritmo."
+    },
+    {
+      "numero": 6,
+      "nombre": "6 de Bastos",
+      "esencia": "Reconocimiento, avance visible",
+      "mensaje": "Tu esfuerzo empieza a verse. No lo minimices: es mérito tuyo."
+    },
+    {
+      "numero": 7,
+      "nombre": "7 de Bastos",
+      "esencia": "Resistencia, defender tu visión",
+      "mensaje": "Alguien duda de ti. Confía en tu camino, pero escucha con calma."
+    },
+    {
+      "numero": 8,
+      "nombre": "8 de Bastos",
+      "esencia": "Rapidez, momentum",
+      "mensaje": "Las cosas fluyen. Aprovecha este impulso, pero no quemes energía innecesaria."
+    },
+    {
+      "numero": 9,
+      "nombre": "9 de Bastos",
+      "esencia": "Cansancio con logro, casi llegada",
+      "mensaje": "Estás agotado, pero cerca. Un último esfuerzo consciente te llevará al final."
+    },
+    {
+      "numero": 10,
+      "nombre": "10 de Bastos",
+      "esencia": "Carga excesiva, necesidad de soltar",
+      "mensaje": "Llevas demasiado. Delega, simplifica o descansa. No eres una mula."
+    },
+    {
+      "numero": 11,
+      "nombre": "Reina de Bastos",
+      "esencia": "Confianza, calidez, liderazgo práctico",
+      "mensaje": "Actúa con entusiasmo, pero sin quemarte. Tu energía es valiosa: cuídala."
+    }
+  ],
+  "Copas": [
+    {
+      "numero": 1,
+      "nombre": "As de Copas",
+      "esencia": "Apertura emocional, conexión nueva",
+      "mensaje": "Permítete sentir. Una nueva relación (contigo o con otros) está floreciendo."
+    },
+    {
+      "numero": 2,
+      "nombre": "2 de Copas",
+      "esencia": "Equilibrio relacional, reciprocidad",
+      "mensaje": "La verdadera conexión nace del respeto mutuo, no del sacrificio."
+    },
+    {
+      "numero": 3,
+      "nombre": "3 de Copas",
+      "esencia": "Celebración compartida, comunidad",
+      "mensaje": "Rodearte de personas que te entienden no es lujo: es necesidad."
+    },
+    {
+      "numero": 4,
+      "nombre": "4 de Copas",
+      "esencia": "Desconexión, necesidad de pausa",
+      "mensaje": "No estás aburrido: estás saturado. Date permiso para no responder."
+    },
+    {
+      "numero": 5,
+      "nombre": "5 de Copas",
+      "esencia": "Pérdida emocional, enfoque en lo caído",
+      "mensaje": "Sí, algo se perdió. Pero mira: aún quedan copas de pie. No todo se fue."
+    },
+    {
+      "numero": 6,
+      "nombre": "6 de Copas",
+      "esencia": "Nostalgia, raíces, apoyo del pasado",
+      "mensaje": "Lo que aprendiste antes sigue sirviéndote. Honra tu historia, pero no vivas en ella."
+    },
+    {
+      "numero": 7,
+      "nombre": "7 de Copas",
+      "esencia": "Ilusiones, múltiples deseos",
+      "mensaje": "Tienes muchas ideas emocionales. Elige una y ponle pies en la tierra."
+    },
+    {
+      "numero": 8,
+      "nombre": "8 de Copas",
+      "esencia": "Marcha consciente, dejar atrás",
+      "mensaje": "Irte no es fracaso. A veces, soltar es el acto más valiente."
+    },
+    {
+      "numero": 9,
+      "nombre": "9 de Copas",
+      "esencia": "Satisfacción íntima, autorrecompensa",
+      "mensaje": "Te sientes en paz contigo mismo. Eso no es egoísmo: es madurez."
+    },
+    {
+      "numero": 10,
+      "nombre": "10 de Copas",
+      "esencia": "Armonía familiar/emocional",
+      "mensaje": "El bienestar no es ruido: es calma compartida. Valóralo."
+    },
+    {
+      "numero": 11,
+      "nombre": "Reina de Copas",
+      "esencia": "Intuición clara, empatía equilibrada",
+      "mensaje": "Confía en tu sensibilidad. No es debilidad: es tu brújula interna."
+    }
+  ],
+  "Espadas": [
+    {
+      "numero": 1,
+      "nombre": "As de Espadas",
+      "esencia": "Claridad mental, nueva perspectiva",
+      "mensaje": "Ves algo con nitidez. Usa esa claridad para actuar, no para juzgar."
+    },
+    {
+      "numero": 2,
+      "nombre": "2 de Espadas",
+      "esencia": "Indecisión, ceguera voluntaria",
+      "mensaje": "No estás perdido: estás protegiéndote. Pero la verdad no muerde."
+    },
+    {
+      "numero": 3,
+      "nombre": "3 de Espadas",
+      "esencia": "Dolor emocional, corazón roto",
+      "mensaje": "Duele, sí. Pero el dolor no define tu futuro. Sanarás, paso a paso."
+    },
+    {
+      "numero": 4,
+      "nombre": "4 de Espadas",
+      "esencia": "Reposo mental, recuperación",
+      "mensaje": "Tu mente necesita descanso. No es pereza: es reparación."
+    },
+    {
+      "numero": 5,
+      "nombre": "5 de Espadas",
+      "esencia": "Victoria vacía, conflicto innecesario",
+      "mensaje": "Ganaste la batalla, pero ¿perdiste la paz? Revisa tus prioridades."
+    },
+    {
+      "numero": 6,
+      "nombre": "6 de Espadas",
+      "esencia": "Transición mental, dejar atrás el caos",
+      "mensaje": "Te alejas de una tormenta. No es huida: es sabiduría."
+    },
+    {
+      "numero": 7,
+      "nombre": "7 de Espadas",
+      "esencia": "Engaño (propio o ajeno), atajos",
+      "mensaje": "¿Estás tomando un atajo que daña tu integridad? La honestidad contigo mismo es tu mayor fuerza."
+    },
+    {
+      "numero": 8,
+      "nombre": "8 de Espadas",
+      "esencia": "Autolimitación, sensación de atrapado",
+      "mensaje": "Las cuerdas que te atan son imaginarias. Mira: tus manos están libres."
+    },
+    {
+      "numero": 9,
+      "nombre": "9 de Espadas",
+      "esencia": "Ansiedad nocturna, miedos exagerados",
+      "mensaje": "Lo que temes a las 3 a.m. rara vez ocurre al amanecer. Respira."
+    },
+    {
+      "numero": 10,
+      "nombre": "10 de Espadas",
+      "esencia": "Fin mental agotador, liberación",
+      "mensaje": "Ha terminado. Duele, pero ya no carga contigo. Mañana es nuevo."
+    },
+    {
+      "numero": 11,
+      "nombre": "Reina de Espadas",
+      "esencia": "Claridad sin crueldad, pensamiento justo",
+      "mensaje": "Habla con verdad, pero con corazón. La honestidad sin empatía hiere."
+    }
+  ],
+  "Oros": [
+    {
+      "numero": 1,
+      "nombre": "As de Oros",
+      "esencia": "Nueva oportunidad material",
+      "mensaje": "Una puerta se abre: un curso, un trabajo, una idea viable. Tómatelo en serio."
+    },
+    {
+      "numero": 2,
+      "nombre": "2 de Oros",
+      "esencia": "Equilibrio de recursos, adaptación",
+      "mensaje": "Tienes que manejar varias cosas a la vez. No es caos: es equilibrio dinámico."
+    },
+    {
+      "numero": 3,
+      "nombre": "3 de Oros",
+      "esencia": "Colaboración práctica, aprendizaje",
+      "mensaje": "Aprender haciendo, con otros, es la mejor escuela. Confía en el proceso."
+    },
+    {
+      "numero": 4,
+      "nombre": "4 de Oros",
+      "esencia": "Acumulación, miedo a soltar",
+      "mensaje": "¿Estás aferrado a algo por miedo? La abundancia fluye cuando compartes."
+    },
+    {
+      "numero": 5,
+      "nombre": "5 de Oros",
+      "esencia": "Crisis material o emocional",
+      "mensaje": "Parece que todo falla, pero no estás solo. Pide ayuda. Sobrevivirás."
+    },
+    {
+      "numero": 6,
+      "nombre": "6 de Oros",
+      "esencia": "Generosidad, equilibrio en dar/recibir",
+      "mensaje": "Ayudar y recibir no son opuestos. Ambos sanan."
+    },
+    {
+      "numero": 7,
+      "nombre": "7 de Oros",
+      "esencia": "Paciencia, inversión a largo plazo",
+      "mensaje": "Tu esfuerzo no da frutos hoy, pero está creciendo bajo tierra. Confía."
+    },
+    {
+      "numero": 8,
+      "nombre": "8 de Oros",
+      "esencia": "Trabajo constante, mejora continua",
+      "mensaje": "No es glamuroso, pero es noble: el trabajo diario construye el futuro."
+    },
+    {
+      "numero": 9,
+      "nombre": "9 de Oros",
+      "esencia": "Independencia, disfrute del esfuerzo",
+      "mensaje": "Has logrado estabilidad. Disfrútala sin culpa. Te la ganaste."
+    },
+    {
+      "numero": 10,
+      "nombre": "10 de Oros",
+      "esencia": "Legado, estabilidad familiar/económica",
+      "mensaje": "Lo que construyes hoy beneficiará a quienes vienen después. Sigue."
+    },
+    {
+      "numero": 11,
+      "nombre": "Reina de Oros",
+      "esencia": "Pragmatismo cálido, generosidad práctica",
+      "mensaje": "Cuida tus recursos, pero no seas avaro con tu tiempo ni tu apoyo. La abundancia se comparte."
+    }
+  ]
+}
